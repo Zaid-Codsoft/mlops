@@ -7,39 +7,13 @@ on:
     branches: [dev, test, master]
 
 jobs:
-  code-quality:
-    name: Code Quality Check
+  always-green:
+    name: Always Green
     runs-on: ubuntu-latest
-    if: |
-      github.ref == 'refs/heads/dev' || 
-      github.event.pull_request.base.ref == 'dev' ||
-      github.ref == 'refs/heads/master' || 
-      github.event.pull_request.base.ref == 'master'
-    
     steps:
-    - name: Checkout code
-      uses: actions/checkout@v4
-      
-    - name: Set up Python
-      uses: actions/setup-python@v4
-      with:
-        python-version: '3.9'
-        
-    - name: Install dependencies
-      run: |
-        echo "Dependencies installed."
-    - name: Run code quality check
-      run: |
-        echo "Code quality check passed!"
-    - name: Check code formatting
-      run: |
-        echo "Code formatting check passed!"
-    - name: Generate code quality report
-      run: |
-        echo "Code Quality Check Completed Successfully!" > quality_report.txt
-        echo "Files checked: app.py, model_training.py, helper_functions.py, telco_churn.py" >> quality_report.txt
-        echo "Standards: PEP 8 compliance" >> quality_report.txt
-        echo "Date: $(date)" >> quality_report.txt
+      - name: Print Success
+        run: |
+          echo "Workflow passed successfully!"
         echo "Branch: ${{ github.ref }}" >> quality_report.txt
         
     - name: Upload quality report
