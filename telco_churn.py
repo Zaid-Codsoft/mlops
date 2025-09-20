@@ -130,7 +130,7 @@ models = [('LR', LogisticRegression(random_state=SEED)),
 for name, model in models:
     cv_results = cross_validate(model, X, y, cv=10, scoring=['accuracy', 'f1', 'roc_auc', 'precision', 'recall'])
     print(f'########## {name} ##########')
-    print(f'Accuracy: {round(cv_results['test_accuracy'].mean(), 4)}')
+    print(f"Accuracy: {round(cv_results['test_accuracy'].mean(), 4)}")
     print(f'Auc: {round(cv_results['test_roc_auc'].mean(), 4)}')
     print(f'Recall: {round(cv_results['test_recall'].mean(), 4)}')
     print(f'Precision: {round(cv_results['test_precision'].mean(), 4)}')
