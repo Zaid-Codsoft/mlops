@@ -158,18 +158,15 @@ class TestHelperFunctions(unittest.TestCase):
     
     def test_grab_col_names(self):
         """Test column name categorization"""
-            # Create sample dataframe with equal length columns
-            df = pd.DataFrame({
-                'numeric_col': [1, 2, 3, 4, 5],
-                'categorical_col': ['A', 'B', 'A', 'B', 'A'],
-                'high_cardinality': [f'item_{i}' for i in range(5)]
-            })
-        
+        # Create sample dataframe with equal length columns
+        df = pd.DataFrame({
+            'numeric_col': [1, 2, 3, 4, 5],
+            'categorical_col': ['A', 'B', 'A', 'B', 'A'],
+            'high_cardinality': [f'item_{i}' for i in range(5)]
+        })
         # Import the function
         from helper_functions import grab_col_names
-        
         cat_cols, num_cols, cat_but_car, num_but_cat = grab_col_names(df)
-        
         self.assertIn('categorical_col', cat_cols)
         self.assertIn('numeric_col', num_cols)
         self.assertIn('high_cardinality', cat_but_car)
