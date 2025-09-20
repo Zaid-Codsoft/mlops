@@ -24,7 +24,7 @@ jobs:
         echo "Dependencies installed."
     - name: Run unit tests
       run: |
-        echo "Unit tests passed!"
+        echo "Unit tests passed! (simulated)"
     - name: Generate test report
       run: |
         echo "Unit Tests Execution Report" > test_report.txt
